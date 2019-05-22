@@ -1,0 +1,35 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: hello-dubbo-service-user-consumer
+
+#集中定义自定义的版本号,方便在本项目中引入使用${user.service.version}
+user:
+  service:
+    version: 1.0.0
+
+#ָ定义dubbo扫描的包
+dubbo:
+  scan:
+    basePackages: com.pjqdyd.hello.dubbo.service.user.consumer.controller
+  #dubbo的应用id,name以及运维的端口和是否状态检查
+  application:
+    id: hello-dubbo-service-user-consumer
+    name: hello-dubbo-service-user-consumer
+    qos-port: 22223
+    qos-enable: true
+ #dubbo内部的私有通信协议
+  protocol:
+    id: dubbo
+    name: dubbo
+    #port: 12345 #消费者也就是客户端的负载均衡端口,需要API网关配置
+    serialization: kryo
+  #定义注册中心
+  registry:
+    id: zookeeper
+    address: zookeeper://127.0.0.1:2181?backup=127.0.0.1:2182,127.0.0.1:2183
+  #显示元数据,方便在admin看到消费者数据,包括消费者消费的方法
+  metadata-report:
+    address: zookeeper://127.0.0.1:2181

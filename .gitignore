@@ -1,0 +1,9 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Maven template
+**/target
+**/.mvn
+**/mvnw.cmd
+**/mvnw
+### JetBrains template
+**/.idea
+**/*.iml

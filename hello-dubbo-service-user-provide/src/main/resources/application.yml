@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: hello-dubbo-service-user-provider
+
+#集中定义自定义的版本号,方便在本项目中引入使用${user.service.version}
+user:
+  service:
+    version: 1.0.0
+
+#ָ定义dubbo扫描的包
+dubbo:
+  scan:
+    basePackages: com.pjqdyd.hello.dubbo.service.user.provide.api
+  #dubbo的应用id,name以及运维的端口和是否状态检查
+  application:
+    id: hello-dubbo-service-user-provider
+    name: hello-dubbo-service-user-provider
+    qos-port: 22222
+    qos-enable: true
+  #dubbo内部的私有通信协议
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: 12345 #服务提供者的端口,要开启多个服务提供者的负载均衡需要不同端口
+    status: server
+    serialization: kryo
+  #定义注册中心
+  registry:
+    id: zookeeper
+    address: zookeeper://127.0.0.1:2181?backup=127.0.0.1:2182,127.0.0.1:2183
+  #provider:
+    #loadbalance: roundrobin    #定义提供者的负载均衡策略,默认random, roundrobin按权重轮询
+
+  #定义配置中心的地址, 就会加载zookeeper下/dubbo/config/dubbo/dubbo.properties节点的配置
+  #就可以在admind控制中心界面的配置管理global中动态添加节点配置,方便应用读取配置
+  #configCenter:
+    #address: zookeeper://127.0.0.1:2181
+
+  #显示元数据,方便在admin看到提供者数据,包括提供者的方法
+  metadata-report:
+    address: zookeeper://127.0.0.1:2181
