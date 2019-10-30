@@ -16,7 +16,7 @@
  
  3.将项目导入到IDEA中, 根据pom下载好所有的依赖.
  
- 4.在hello-dubbo-service-user-api模块下运行`mvn claen install`将接口模块安装进本地仓库,方便在提供者模块实现接口和消费者模块注入使用接口服务.
+ 4.在hello-dubbo-service-user-api模块下运行`mvn clean install`将接口模块安装进本地仓库,方便在提供者模块实现接口和消费者模块注入使用接口服务.
 
  5.先运行提供者provider的启动类启动提供者服务, 再运行消费者consumer的启动类启动消费者, 访问localhost:9090/user/hi接口测试服务.
  
